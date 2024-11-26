@@ -36,34 +36,34 @@ ______________________________________________________________
 
 3. Главный экран. [AppBar](Screenshot/screenHosp/AppBar.jpg)  
 
-3.1 [бургер меню](Screenshot/screenHosp/BurgerMenu.jpg)
+  3.1 [бургер меню](Screenshot/screenHosp/BurgerMenu.jpg)
 - главная
 - новости
 - о приложении
 
-3.2 заголовок "ВХОСПИСЕ"  
+  3.2 заголовок "ВХОСПИСЕ"  
 
-3.3 цитаты [иконка бабочка](Screenshot/screenHosp/QuotesPage.jpg)
+  3.3 цитаты [иконка бабочка](Screenshot/screenHosp/QuotesPage.jpg)
 - заголовок
 - список цитат
 - кнопка свернуть/развернуть
 
-3.4 личный кабинет
+  3.4 личный кабинет
 - кнопка ["Выйти"](Screenshot/screenHosp/LogOut.jpg)
 
 4.  Главный экран. Новости [все новости](Screenshot/screenHosp/MainPage.jpg)  
 
 - переход на страницу ["Новости"](Screenshot/screenHosp/NewsPage.jpg)
-4.1  кнопка "Обновить"
-4.2  кнопка "Сортировка"
-4.3  кнопка ["Фильтровать новости"](Screenshot/screenHosp/FilterNews.jpg)
+  4.1  кнопка "Обновить"
+  4.2  кнопка "Сортировка"
+  4.3  кнопка ["Фильтровать новости"](Screenshot/screenHosp/FilterNews.jpg)
 - выпадающее меню "Категория"
 - дата начала
 - дата конца
 - кнопка "Фильтровать"
 - кнопка "Отмена"  
 
-4.4  кнопка ["Панель управления"](Screenshot/screenHosp/ControlPanel.jpg)
+  4.4  кнопка ["Панель управления"](Screenshot/screenHosp/ControlPanel.jpg)
 - список новостей
 - кнопка "Сортировка"
 - кнопка ["Фильтровать новости"](Screenshot/screenHosp/ControlPanelFilterNews.jpg)
