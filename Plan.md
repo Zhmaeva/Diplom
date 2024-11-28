@@ -35,23 +35,22 @@ ______________________________________________________________
 - Кнопка "Войти"
 
 3. Главный экран. [AppBar](Screenshot/screenHosp/AppBar.jpg)  
-
-  3.1 [бургер меню](Screenshot/screenHosp/BurgerMenu.jpg)
+  3.1 [главное меню](Screenshot/screenHosp/BurgerMenu.jpg)
 - главная
 - новости
 - о приложении
 
   3.2 заголовок "ВХОСПИСЕ"  
 
-  3.3 цитаты [иконка бабочка](Screenshot/screenHosp/QuotesPage.jpg)
+  3.3 Наша миссия [иконка бабочка](Screenshot/screenHosp/QuotesPage.jpg)
 - заголовок
-- список цитат
+- список цитат(миссий)
 - кнопка свернуть/развернуть
 
   3.4 личный кабинет
 - кнопка ["Выйти"](Screenshot/screenHosp/LogOut.jpg)
 
-4.  Главный экран. Новости [все новости](Screenshot/screenHosp/MainPage.jpg)  
+4.  Экран Новости [все новости](Screenshot/screenHosp/MainPage.jpg)  
 
 - переход на страницу ["Новости"](Screenshot/screenHosp/NewsPage.jpg)
   4.1  кнопка "Обновить"
@@ -68,6 +67,12 @@ ______________________________________________________________
 - кнопка "Сортировка"
 - кнопка ["Фильтровать новости"](Screenshot/screenHosp/ControlPanelFilterNews.jpg)
 - кнопка ["Создание новостей"](Screenshot/screenHosp/ControlPanelCreatingNews.jpg)
+
+5. Экран [О приложении](Screenshot/screenHosp/AboutApp.jpg)
+- версия приложения
+- копирайт
+- политика конфиденциальности
+- пользовательское соглашение
 
 
 
