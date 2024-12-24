@@ -18,4 +18,12 @@ __________________________________________________________________
 **Логин**: `login2`  
 **Пароль**: `password2`
 
-### Запуск тестов:
+### Запуск тестов:  
+
+1. установить Scope:  
+   - `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+   - `irm get.scoop.sh | iex`
+2. установить Allure:  
+   - `scoop install allure`
+   - `allure --version`
+3. 
