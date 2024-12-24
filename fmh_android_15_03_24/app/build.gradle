@@ -19,6 +19,10 @@ android {
         targetSdkVersion 32
         versionCode 14
         versionName "1.0.0"
+
+        //Инструмент запуска тестов
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "io.qameta.allure.android.runners.AllureAndroidJUnitRunner"
     }
 
     compileOptions {
@@ -91,4 +95,31 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+    //Espresso
+    def junit_version = '4.13.2'
+    def test_ext_junit_version = '1.2.1'
+    def test_rules_version = '1.6.1'
+    def test_runner_version = '1.4.0'
+    def test_espresso_espresso_core_version ='3.6.1'
+    def test_espresso_espresso_intents = '3.4.0'
+    def test_espresso_espresso_idling_resource = '3.4.0'
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
+    androidTestImplementation "androidx.test:rules:$test_rules_version"
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_espresso_core_version"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$test_espresso_espresso_intents"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$test_espresso_espresso_idling_resource"
+
+    //Allure
+    def allure_version = '2.4.0'
+
+    androidTestImplementation "io.qameta.allure:allure-kotlin-model:$allure_version"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-commons:$allure_version"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-junit4:$allure_version"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-android:$allure_version"
+
 }
