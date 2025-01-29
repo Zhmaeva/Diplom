@@ -70,45 +70,6 @@ public class AuthScreenTest {
         authSteps.checkErrorAuth(dataGenerator.emptyLoginOrPasswordException);
     }
 
-    // Нельзя авторизоваться в приложении с логином незарегистрированного пользователя и
-    // корректным паролем зарегистрированного пользователя
-    @Test
-    public void failedAuthorizationWithWrongLoginTest() {
-        authSteps.inputLogin(dataGenerator.wrongLogin);
-        authSteps.inputPassword(dataGenerator.password);
-        authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-    }
-
-    // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
-    // паролем незарегистрированного пользователя
-    @Test
-    public void failedAuthorizationWithWrongPasswordTest() {
-        authSteps.inputLogin(dataGenerator.login);
-        authSteps.inputPassword(dataGenerator.wrongPassword);
-        authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-    }
-
-    // Нельзя авторизоваться в приложении с логином состоящим из 1 символа и
-    // корректным паролем зарегистрированного пользователя
-    @Test
-    public void failedAuthorizationWithOneCharacterLoginTest() {
-        authSteps.inputLogin(dataGenerator.oneCharacterLogin);
-        authSteps.inputPassword(dataGenerator.password);
-        authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-    }
-
-    // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
-    // паролем из 1 символа
-    @Test
-    public void failedAuthorizationWithOneCharacterPasswordTest() {
-        authSteps.inputLogin(dataGenerator.login);
-        authSteps.inputPassword(dataGenerator.oneCharacterPassword);
-        authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-    }
 
     // Нельзя авторизоваться в приложении с корректным логином и паролем
     // зарегистрированного пользователя, написанном в разном регистре
@@ -118,6 +79,55 @@ public class AuthScreenTest {
         authSteps.inputPassword(dataGenerator.differentRegistersPassword);
         authSteps.clickBtnEnter();
         authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+    }
+
+
+    // Нельзя авторизоваться в приложении с логином незарегистрированного пользователя и
+    // корректным паролем зарегистрированного пользователя
+    // предупреждение должно быть другим
+    @Test
+    public void failedAuthorizationWithWrongLoginTest() {
+        authSteps.inputLogin(dataGenerator.wrongLogin);
+        authSteps.inputPassword(dataGenerator.password);
+        authSteps.clickBtnEnter();
+        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+    }
+
+    // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
+    // паролем незарегистрированного пользователя
+    // предупреждение должно быть другим
+    @Test
+    public void failedAuthorizationWithWrongPasswordTest() {
+        authSteps.inputLogin(dataGenerator.login);
+        authSteps.inputPassword(dataGenerator.wrongPassword);
+        authSteps.clickBtnEnter();
+        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+    }
+
+    // Нельзя авторизоваться в приложении с логином состоящим из 1 символа и
+    // корректным паролем зарегистрированного пользователя
+    // предупреждение должно быть другим
+    @Test
+    public void failedAuthorizationWithOneCharacterLoginTest() {
+        authSteps.inputLogin(dataGenerator.oneCharacterLogin);
+        authSteps.inputPassword(dataGenerator.password);
+        authSteps.clickBtnEnter();
+        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+    }
+
+    // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
+    // паролем из 1 символа
+    // предупреждение должно быть другим
+    @Test
+    public void failedAuthorizationWithOneCharacterPasswordTest() {
+        authSteps.inputLogin(dataGenerator.login);
+        authSteps.inputPassword(dataGenerator.oneCharacterPassword);
+        authSteps.clickBtnEnter();
+        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
     }
 
 }

@@ -80,8 +80,7 @@ public class AuthSteps {
 
     @Step("Проверка ошибки авторизации")
     public void checkErrorAuth(String exception) {
-        onView(
-                withText(exception))
+        onView(withText(exception))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }
