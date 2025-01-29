@@ -2,10 +2,9 @@ package ru.iteco.fmhandroid.ui.data;
 
 import com.github.javafaker.Faker;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class DataGenerator {
+
+    // Страница авторизации
     public String login = "login2";
     public String password = "password2";
     public String emptyLogin = "";
@@ -37,11 +36,18 @@ public class DataGenerator {
         return password;
     }
 
+    // Страница О приложении
+    public String privacyPolicyLink = "https://vhospice.org/#/privacy-policy/";
+    public String termsOfUseLink = "https://vhospice.org/#/terms-of-use";
+    public String version = "1.0.0";
 
-    public static String generateDate(int shift) {
-        String date;
-        date = LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return date;
-    }
+
+
+    // Главная страница
+//    public static String generateDate(int shift) {
+//        String date;
+//        date = LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+//        return date;
+//    }
 
 }

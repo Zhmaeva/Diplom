@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.DataGenerator;
-import ru.iteco.fmhandroid.ui.pages.AuthPage;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
 import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 
@@ -22,7 +21,6 @@ import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 public class AuthScreenTest {
     DataGenerator dataGenerator = new DataGenerator();
     LoadingSteps loadingSteps = new LoadingSteps();
-    AuthPage authPage = new AuthPage();
     AuthSteps authSteps = new AuthSteps();
 
 
