@@ -41,9 +41,11 @@ public class DataGenerator {
     public String termsOfUseLink = "https://vhospice.org/#/terms-of-use";
     public String version = "1.0.0";
 
+    public String truePrivacyPolicyLink = "https://vhospice.org/privacy-policy/";
+    public String trueTermsOfUseLink = "https://vhospice.org/terms-of-use";
 
 
-    // Главная страница
+    // Страница Новости
 //    public static String generateDate(int shift) {
 //        String date;
 //        date = LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));

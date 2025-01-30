@@ -36,6 +36,7 @@ public class AboutSteps {
                         matches(
                                 allOf(
                                         withText(dataGenerator.privacyPolicyLink),
+                                        //withText(dataGenerator.truePrivacyPolicyLink),
                                         isDisplayed(),
                                         isClickable())));
     }
@@ -48,6 +49,7 @@ public class AboutSteps {
                         matches(
                                 allOf(
                                         withText(dataGenerator.termsOfUseLink),
+                                        //withText(dataGenerator.trueTermsOfUseLink),
                                         isDisplayed(),
                                         isClickable())));
     }
