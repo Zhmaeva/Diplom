@@ -10,11 +10,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.not;
 
 import android.view.View;
 
-import org.hamcrest.Matchers;
-
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.data.DataGenerator;
 import ru.iteco.fmhandroid.ui.data.UIHelper;
@@ -25,8 +25,6 @@ public class AuthSteps {
     private final AuthPage authPage = new AuthPage();
     UIHelper uiHelper = new UIHelper();
     DataGenerator dataGenerator = new DataGenerator();
-
-    private View decorView;
 
     @Step("Проверка загрузки экрана авторизации")
     public void checkLoadingAuthPage() {
@@ -50,6 +48,7 @@ public class AuthSteps {
 
     @Step("Нажатие на кнопку войти")
     public void clickBtnEnter() {
+        uiHelper.elementWaiting(authPage.btnEnterId);
         onView(withId(authPage.btnEnterId)).perform(click());
     }
 
@@ -78,10 +77,10 @@ public class AuthSteps {
         clickBtnEnter();
     }
 
-    @Step("Проверка ошибки авторизации")
-    public void checkErrorAuth(String exception) {
+    public void checkAuthError(String exception, View decorView) {
+        Allure.step("Проверка сообщения об ошибке по тексту");
         onView(withText(exception))
-                .inRoot(withDecorView(Matchers.not(decorView)))
+                .inRoot(withDecorView(not(decorView)))
                 .check(matches(isDisplayed()));
     }
 }

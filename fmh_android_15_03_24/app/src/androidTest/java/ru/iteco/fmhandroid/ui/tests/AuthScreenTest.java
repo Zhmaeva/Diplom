@@ -1,5 +1,6 @@
 package ru.iteco.fmhandroid.ui.tests;
 
+import android.view.View;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -22,6 +23,7 @@ public class AuthScreenTest {
     DataGenerator dataGenerator = new DataGenerator();
     LoadingSteps loadingSteps = new LoadingSteps();
     AuthSteps authSteps = new AuthSteps();
+    private View decorView;
 
 
     @Rule
@@ -58,7 +60,7 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.emptyLogin);
         authSteps.inputPassword(dataGenerator.password);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.emptyLoginOrPasswordException);
+        authSteps.checkAuthError(dataGenerator.emptyLoginOrPasswordException, decorView);
     }
 
     // Нельзя авторизоваться в приложении с пустым полем пароль и с корректным логином
@@ -67,18 +69,20 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.login);
         authSteps.inputPassword(dataGenerator.emptyPassword);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.emptyLoginOrPasswordException);
+        authSteps.checkAuthError(dataGenerator.emptyLoginOrPasswordException, decorView);
     }
 
 
     // Нельзя авторизоваться в приложении с корректным логином и паролем
     // зарегистрированного пользователя, написанном в разном регистре
+    // предупреждение должно быть другим
     @Test
     public void failedAuthorizationWithDifferentLetterTest() {
         authSteps.inputLogin(dataGenerator.differentRegistersLogin);
         authSteps.inputPassword(dataGenerator.differentRegistersPassword);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
+        authSteps.checkAuthError(dataGenerator.wrongLoginOrPasswordException, decorView);
+        //authSteps.checkAuthError(dataGenerator.tryAgainLaterException, decorView);
     }
 
 
@@ -90,8 +94,8 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.wrongLogin);
         authSteps.inputPassword(dataGenerator.password);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+        authSteps.checkAuthError(dataGenerator.wrongLoginOrPasswordException, decorView);
+        //authSteps.checkAuthError(dataGenerator.tryAgainLaterException, decorView);
     }
 
     // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
@@ -102,8 +106,8 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.login);
         authSteps.inputPassword(dataGenerator.wrongPassword);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+        authSteps.checkAuthError(dataGenerator.wrongLoginOrPasswordException, decorView);
+        //authSteps.checkAuthError(dataGenerator.tryAgainLaterException, decorView);
     }
 
     // Нельзя авторизоваться в приложении с логином состоящим из 1 символа и
@@ -114,8 +118,8 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.oneCharacterLogin);
         authSteps.inputPassword(dataGenerator.password);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+        authSteps.checkAuthError(dataGenerator.wrongLoginOrPasswordException, decorView);
+        //authSteps.checkAuthError(dataGenerator.tryAgainLaterException, decorView);
     }
 
     // Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и
@@ -126,8 +130,8 @@ public class AuthScreenTest {
         authSteps.inputLogin(dataGenerator.login);
         authSteps.inputPassword(dataGenerator.oneCharacterPassword);
         authSteps.clickBtnEnter();
-        authSteps.checkErrorAuth(dataGenerator.wrongLoginOrPasswordException);
-        //authSteps.checkErrorAuth("Something went wrong. Try again later.");
+        authSteps.checkAuthError(dataGenerator.wrongLoginOrPasswordException, decorView);
+        //authSteps.checkAuthError(dataGenerator.tryAgainLaterException, decorView);
     }
 
 }
