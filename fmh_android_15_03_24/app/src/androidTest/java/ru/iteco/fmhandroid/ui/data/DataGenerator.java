@@ -2,6 +2,14 @@ package ru.iteco.fmhandroid.ui.data;
 
 import com.github.javafaker.Faker;
 
+import java.util.Locale;
+import java.util.Random;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class DataGenerator {
 
     // Страница авторизации
@@ -36,6 +44,7 @@ public class DataGenerator {
         return password;
     }
 
+
     // Страница О приложении
     public String privacyPolicyLink = "https://vhospice.org/#/privacy-policy/";
     public String termsOfUseLink = "https://vhospice.org/#/terms-of-use";
@@ -45,11 +54,86 @@ public class DataGenerator {
     public String trueTermsOfUseLink = "https://vhospice.org/terms-of-use";
 
 
-    // Страница Новости
-//    public static String generateDate(int shift) {
-//        String date;
-//        date = LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-//        return date;
-//    }
+    // Страница Новости > Фильтр новостей
+    public String filter = "FILTER";
+    public String cancel = "CANCEL";
+    public String filterNews = "Filter news";
+    public String category = "Category";
+
+
+    // Страница Новости > Добавить новость
+    public String titlePageAddNews = "Creating";
+    public String emptyFieldsMsg = "Fill empty fields";
+
+    public static String generateTitle() {
+        Faker faker = new Faker(new Locale("ru"));
+        String title;
+        title= faker.dune().title();
+        return title;
+    }
+
+    public static String generateDescription() {
+        Faker faker = new Faker(new Locale("ru"));
+        String description;
+        description = faker.dune().saying();
+        return description;
+    }
+
+    public static String getCurrentDate() {
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        return dateFormat.format(currentDate);
+    }
+
+    public static String getCurrentTime() {
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        return dateFormat.format(currentDate);
+    }
+
+    public static String generateDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Faker faker = new Faker(new Locale("ru"));
+        String date;
+        date = sdf.format(faker.date().birthday());
+        return date;
+    }
+
+    public static String generateFutureDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Faker faker = new Faker(new Locale("ru"));
+        String date;
+        date = sdf.format(faker.date().future(360, TimeUnit.DAYS));
+        return date;
+    }
+
+    public static String generatePastDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Faker faker = new Faker(new Locale("ru"));
+        String date;
+        date = sdf.format(faker.date().past(150, TimeUnit.DAYS));
+        return date;
+    }
+
+    public static class RandomCategory {
+        static final Random rand = new Random();
+
+        public static String randomCategory() {
+            String[] categories = {
+                    "Объявление",
+                    "День рождения",
+                    "Зарплата",
+                    "Профсоюз",
+                    "Праздник",
+                    "Массаж",
+                    "Благодарность",
+                    "Нужна помощь"
+            };
+            final String category = categories[rand.nextInt(categories.length)];
+            return category;
+        }
+    }
 
 }
+
+
