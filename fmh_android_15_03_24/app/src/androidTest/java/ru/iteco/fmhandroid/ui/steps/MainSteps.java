@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.allOf;
 
 import androidx.test.espresso.ViewInteraction;
 
-import io.qameta.allure.kotlin.Step;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.UIHelper;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
@@ -20,8 +20,8 @@ public class MainSteps {
     private final MainPage mainPage = new MainPage();
     UIHelper uiHelper = new UIHelper();
 
-    @Step("Проверка загрузки главного экрана")
     public void checkLoadingMainPage() {
+        Allure.step("Проверка загрузки главного экрана");
         onView(mainPage.getMainMenuBtn()).check(matches(isDisplayed()));
         onView(mainPage.getTrademarkImageView()).check(matches(isDisplayed()));
         onView(mainPage.getOurMissionImageButton()).check(matches(isDisplayed()));
@@ -29,14 +29,14 @@ public class MainSteps {
         onView(mainPage.getNewsContainer()).check(matches(isDisplayed()));
     }
 
-    @Step("Переход на страницу новости с главного экрана")
     public void goToNewsPageFromMainPage() {
+        Allure.step("Переход на страницу новости с главного экрана");
         ViewInteraction allNewsLink = onView(mainPage.getAllNewsLink()).check(matches(isDisplayed()));
         allNewsLink.perform(click());
     }
 
-    @Step("Проверка загрузки страницы Новости")
     public void checkLoadingNewsPage() {
+        Allure.step("Проверка загрузки страницы Новости");
         ViewInteraction newsTitle = onView(allOf(
                 withText("News"),
                 withParent(withParent(withId(R.id.container_list_news_include))),
@@ -44,17 +44,16 @@ public class MainSteps {
         newsTitle.check(matches(withText("News")));
     }
 
-    @Step("Открытие главного меню (бургер")
     public void openMainMenu() {
+        Allure.step("Открытие главного меню (бургер");
         onView(mainPage.getMainMenuBtn()).perform(click());
     }
 
-    @Step("Переход на страницу новости с главного меню")
     public void goToNewsPageFromMainMenu() {
+        Allure.step("Переход на страницу новости с главного меню");
         uiHelper.elementWaiting(mainPage.mainTitle);
         onView(mainPage.getMenuItemNews())
                 .check(matches(isDisplayed()))
                 .perform(click());
-
     }
 }

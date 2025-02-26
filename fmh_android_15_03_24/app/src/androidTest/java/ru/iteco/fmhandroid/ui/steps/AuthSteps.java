@@ -15,7 +15,6 @@ import static org.hamcrest.Matchers.not;
 import android.view.View;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.data.DataGenerator;
 import ru.iteco.fmhandroid.ui.data.UIHelper;
 import ru.iteco.fmhandroid.ui.pages.AuthPage;
@@ -26,8 +25,8 @@ public class AuthSteps {
     UIHelper uiHelper = new UIHelper();
     DataGenerator dataGenerator = new DataGenerator();
 
-    @Step("Проверка загрузки экрана авторизации")
     public void checkLoadingAuthPage() {
+        Allure.step("Проверка загрузки экрана авторизации");
         uiHelper.elementWaiting(authPage.loginFieldId);
         uiHelper.elementWaiting(authPage.passwordFieldId);
         uiHelper.elementWaiting(authPage.btnEnterId);
@@ -36,42 +35,42 @@ public class AuthSteps {
         onView(authPage.getPasswordField()).check(matches(isDisplayed()));
     }
 
-    @Step("Ввод логина")
     public void inputLogin(String login) {
+        Allure.step("Ввод логина");
         onView(authPage.getLoginField()).perform(typeText(login), closeSoftKeyboard());
     }
 
-    @Step("Ввод пароля")
     public void inputPassword(String password) {
+        Allure.step("Ввод пароля");
         onView(authPage.getPasswordField()).perform(typeText(password), closeSoftKeyboard());
     }
 
-    @Step("Нажатие на кнопку войти")
     public void clickBtnEnter() {
+        Allure.step("Нажатие на кнопку войти");
         uiHelper.elementWaiting(authPage.btnEnterId);
         onView(withId(authPage.btnEnterId)).perform(click());
     }
 
-    @Step("Нажатие на кнопку выход")
     public void clickBtnLogOut() {
+        Allure.step("Нажатие на кнопку выход");
         onView(authPage.getAuthorizationBtn()).perform(click());
         onView(authPage.getLogOutBtn()).perform(click());
     }
 
-    @Step("Проверка выхода из аккаунта")
     public void checkLogOut() {
+        Allure.step("Проверка выхода из аккаунта");
         uiHelper.elementWaiting(authPage.loginFieldId);
         onView(authPage.getTitle()).check(matches(isDisplayed()));
     }
 
-    @Step("Проверка входа в аккаунт")
     public void checkLogIn() {
+        Allure.step("Проверка входа в аккаунт");
         uiHelper.elementWaiting(authPage.authorizationBtnId);
         onView(withId(authPage.authorizationBtnId)).check(matches(isDisplayed()));
     }
 
-    @Step("Успешная авторизация")
     public void successAuth() {
+        Allure.step("Успешная авторизация");
         inputLogin(dataGenerator.login);
         inputPassword(dataGenerator.password);
         clickBtnEnter();

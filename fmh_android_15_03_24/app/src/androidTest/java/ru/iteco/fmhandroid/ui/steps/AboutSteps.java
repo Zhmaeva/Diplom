@@ -8,7 +8,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
-import io.qameta.allure.kotlin.Step;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.data.DataGenerator;
 import ru.iteco.fmhandroid.ui.data.UIHelper;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
@@ -20,16 +20,16 @@ public class AboutSteps {
     UIHelper uiHelper = new UIHelper();
     DataGenerator dataGenerator = new DataGenerator();
 
-    @Step("Нажать на кнопку О приложении")
     public void clickBtnAbout() {
+        Allure.step("Нажать на кнопку О приложении");
         uiHelper.elementWaiting(mainPage.mainTitle);
         onView(aboutPage.getMenuItemAbout())
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажать на ссылку Политика конфиденциальности")
     public void clickPrivacyPolicy() {
+        Allure.step("Нажать на ссылку Политика конфиденциальности");
         uiHelper.elementWaiting(aboutPage.aboutPrivacyPolicy);
         onView(aboutPage.getAboutPrivacyPolicy())
                 .check(
@@ -41,8 +41,8 @@ public class AboutSteps {
                                         isClickable())));
     }
 
-    @Step("Нажать на ссылку Условия использования")
     public void clickTermsOfUse() {
+        Allure.step("Нажать на ссылку Условия использования");
         uiHelper.elementWaiting(aboutPage.aboutTermsOfUse);
         onView(aboutPage.getAboutTermsOfUse())
                 .check(
@@ -54,8 +54,8 @@ public class AboutSteps {
                                         isClickable())));
     }
 
-    @Step("Проверка версии приложения")
     public void checkVersion() {
+        Allure.step("Проверка версии приложения");
         uiHelper.elementWaiting(aboutPage.aboutVersion);
         onView(aboutPage.getAboutVersion())
                 .check(

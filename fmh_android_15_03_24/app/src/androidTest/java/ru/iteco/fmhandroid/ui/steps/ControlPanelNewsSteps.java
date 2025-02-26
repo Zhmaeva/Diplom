@@ -8,87 +8,87 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
-import io.qameta.allure.kotlin.Step;
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.pages.ControlPanelNewsPage;
 
 public class ControlPanelNewsSteps {
     ControlPanelNewsPage controlPanel = new ControlPanelNewsPage();
     CreateNewsSteps createNewsSteps = new CreateNewsSteps();
 
-    @Step("Проверка наличия заголовка Панель управления")
     public void checkTitleControlPanel() {
+        Allure.step("Проверка наличия заголовка Панель управления");
         onView(controlPanel.getTitle()).check(matches(isDisplayed()));
     }
 
-    @Step("Нажатие на кнопку сортировка новостей")
     public void clickSortNewsBtn() {
+        Allure.step("Нажатие на кнопку сортировка новостей");
         onView(controlPanel.getSortNewsBtn())
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажатие на кнопку фильтр новостей")
     public void clickFilterNewsBtn() {
+        Allure.step("Нажатие на кнопку фильтр новостей");
         onView(controlPanel.getFilterNewsBtn())
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажатие на кнопку добавить новость")
     public void clickAddNewsBtn() {
+        Allure.step("Нажатие на кнопку добавить новость");
         onView(controlPanel.getAddNewsBtn())
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажатие на кнопку удалить новость")
     public void clickDeleteNewsBtn(String newsTitle) {
+        Allure.step("Нажатие на кнопку удалить новость");
         onView(controlPanel.deleteNewsWithTitle(newsTitle))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажатие на кнопку редактировать новость")
     public void clickEditNewsBtn(String newsTitle) {
+        Allure.step("Нажатие на кнопку редактировать новость");
         onView(controlPanel.editNewsWithTitle(newsTitle))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Нажатие на кнопку просмотреть новость")
     public void clickViewNewsBtn(String title) {
+        Allure.step("Нажатие на кнопку просмотреть новость");
         onView(controlPanel.getViewNewsBtn(title))
                 .check(matches(isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Получение описания новости")
     public void getDescriptionNews(String title) {
+        Allure.step("Получение описания новости");
         onView(controlPanel.getDescriptionNews(title))
                 .check(matches(isDisplayed()));
     }
 
-    @Step("Проверка наличия новостей в списке с выбранным названием")
     public void checkingNewsListWithText(String text) {
+        Allure.step("Проверка наличия новостей в списке с выбранным названием");
         onView(allOf(
                 withText(text), isDisplayed()))
                 .check(matches(isDisplayed()));
     }
 
-    @Step("Проверка отсутствия новостей с выбранным названием")
     public void checkingNewsListWithoutSelectedText(String text) {
+        Allure.step("Проверка отсутствия новостей с выбранным названием");
         onView(allOf(withText(text), isDisplayed())).check(doesNotExist());
     }
 
-    @Step("Проверка статуса новости")
     public void checkingNewsStatus(String title, String status) {
+        Allure.step("Проверка статуса новости");
         onView(controlPanel.getNewsStatus(title))
                 .check(matches(isDisplayed()))
                 .check(matches(withText(status)));
     }
 
-    @Step("Удаление созданной новости")
     public void deleteNews(String title) {
+        Allure.step("Удаление созданной новости");
         clickDeleteNewsBtn(title);
         createNewsSteps.clickOkBtnInDialog();
     }
