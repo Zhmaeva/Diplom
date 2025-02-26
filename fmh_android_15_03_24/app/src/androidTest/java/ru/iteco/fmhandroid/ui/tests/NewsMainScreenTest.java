@@ -48,7 +48,7 @@ public class NewsMainScreenTest {
         authSteps.clickBtnLogOut();
     }
 
-    // Наличие кнопки сортировка новостей(*новости не отображаются!)
+    // Нажатие кнопки сортировка новостей
     @Test
     public void clickSortNewsBtnTest() {
         newsMainSteps.clickSortNewsBtn();

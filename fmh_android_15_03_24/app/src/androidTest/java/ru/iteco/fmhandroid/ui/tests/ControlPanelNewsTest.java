@@ -212,15 +212,28 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsListWithText(title);
     }
 
+    // Нажатие на кнопку сортировка новостей в панели управления
+    @Test
+    public void sortNewsTest() {
+        controlPanelNewsSteps.clickSortNewsBtn();
+    }
 
-//    // Сортировка новостей в панели управления
+    // Фильтрация новостей по категории в панели управления
+    @Test
+    public void filterNewsByCategoryTest() {
+        String category = randomCategory();
+        String title = generateTitle();
+        String publicationDate = generateFutureDate();
+        String publicationTime = getCurrentTime();
+        String description = generateDescription();
 
-//    // Фильтрация новостей в панели управления
-//    // Фильтровать новости по категории в панели управления
-//    //Фильтровать новости по дате в панели управления
-//    //Фильтровать новости по активности в панели управления
-//    // Фильтровать новости по не активности в панели управления
-//    // Отмена фильтрации новостей в панели управления
+        controlPanelNewsSteps.clickAddNewsBtn();
+        createNewsSteps.createAndSaveNews(
+                category, title, publicationDate, publicationTime, description);
 
+        controlPanelNewsSteps.clickFilterNewsBtn();
+        filterNewsSteps.filterNewsByCategory(category);
+        filterNewsSteps.clickFilterBtn();
+    }
 
 }

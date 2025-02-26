@@ -1,21 +1,27 @@
 package ru.iteco.fmhandroid.ui.data;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.view.View;
 
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.util.HumanReadables;
 import androidx.test.espresso.util.TreeIterables;
 
 import org.hamcrest.Matcher;
 
+import java.lang.annotation.Documented;
 import java.util.concurrent.TimeoutException;
+
+import io.qameta.allure.kotlin.Step;
 
 public class UIHelper {
 
@@ -64,6 +70,16 @@ public class UIHelper {
                         .build();
             }
         };
+    }
+
+    public void clickOkBtnInDialog() {
+        ViewInteraction okBtn = onView(withText("OK"));
+        okBtn.perform(click());
+    }
+
+    public void clickCancelBtnInDialog() {
+        ViewInteraction cancelBtn = onView(withText("CANCEL"));
+        cancelBtn.perform(click());
     }
 }
 

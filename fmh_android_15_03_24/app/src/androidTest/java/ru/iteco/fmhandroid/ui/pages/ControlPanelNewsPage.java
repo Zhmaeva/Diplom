@@ -20,7 +20,6 @@ public class ControlPanelNewsPage {
     public int filterBtn = R.id.filter_news_material_button;
     public int addNewsBtn = R.id.add_news_image_view;
 
-    public int newsListView = R.id.news_list_recycler_view;
     public int titleNews = R.id.news_item_title_text_view;
     public int publicationTextView = R.id.news_item_publication_text_view;
     public int publicationDate = R.id.news_item_publication_date_text_view;

@@ -16,6 +16,8 @@ public class FilterNewsPage {
     UIHelper uiHelper = new UIHelper();
     DataGenerator dataGenerator = new DataGenerator();
 
+    public int newsListView = R.id.news_list_recycler_view;
+    public int categoryImage = R.id.category_icon_image_view;
     public int title = R.id.filter_news_title_text_view;
     public int category = R.id.news_item_category_text_auto_complete_text_view;
     public int dateStart = R.id.news_item_publish_date_start_text_input_edit_text;
@@ -34,9 +36,7 @@ public class FilterNewsPage {
 
     public Matcher<View> getCategory() {
         uiHelper.elementWaiting(category);
-        return allOf(
-                withId(category),
-                withText(dataGenerator.category));
+        return withId(category);
     }
 
     public Matcher<View> getDateStart() {
@@ -61,9 +61,7 @@ public class FilterNewsPage {
 
     public Matcher<View> getFilterBtn() {
         uiHelper.elementWaiting(filterBtn);
-        return allOf(
-                withId(filterBtn),
-                withText(dataGenerator.filter));
+        return withId(filterBtn);
     }
 
     public Matcher<View> getCancelBtn() {
@@ -73,4 +71,13 @@ public class FilterNewsPage {
                 withText(dataGenerator.cancel));
     }
 
+    public Matcher<View> getNewsList() {
+        uiHelper.elementWaiting(newsListView);
+        return withId(newsListView);
+    }
+
+    public Matcher<View> getCategoryImage() {
+        uiHelper.elementWaiting(categoryImage);
+        return withId(categoryImage);
+    }
 }
