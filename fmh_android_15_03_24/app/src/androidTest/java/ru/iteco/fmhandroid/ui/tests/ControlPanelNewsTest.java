@@ -12,7 +12,6 @@ import static ru.iteco.fmhandroid.ui.data.DataGenerator.getCurrentTime;
 import android.view.View;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;
@@ -21,6 +20,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Epic;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.DataGenerator;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
@@ -32,8 +34,10 @@ import ru.iteco.fmhandroid.ui.steps.MainSteps;
 import ru.iteco.fmhandroid.ui.steps.NewsMainSteps;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 
+@Epic("Тест-кейсы для проведения функционального тестирования панели управления новостями")
 public class ControlPanelNewsTest {
     private View decorView;
     DataGenerator dataGenerator = new DataGenerator();
@@ -64,8 +68,8 @@ public class ControlPanelNewsTest {
         authSteps.clickBtnLogOut();
     }
 
-    // Создание новости в панели управления
     @Test
+    @DisplayName("Создание новости в панели управления")
     public void createNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -80,8 +84,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsListWithText(title);
     }
 
-    // Нельзя создать новость с пустыми полями
     @Test
+    @DisplayName("Нельзя создать новость с пустыми полями")
     public void createNewsWithEmptyFieldsTest() {
         controlPanelNewsSteps.clickAddNewsBtn();
         createNewsSteps.clickSaveBtn();
@@ -89,16 +93,16 @@ public class ControlPanelNewsTest {
         pressBack();
     }
 
-    // Отмена создания новости в панели управления
     @Test
+    @DisplayName("Отмена создания новости в панели управления")
     public void cancelCreateNewsTest() {
         controlPanelNewsSteps.clickAddNewsBtn();
         createNewsSteps.clickCancelBtn();
         createNewsSteps.clickOkBtnInDialog();
     }
 
-    // Удаление новости в панели управления
     @Test
+    @DisplayName("Удаление новости в панели управления")
     public void deleteNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -113,8 +117,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsListWithoutSelectedText(title);
     }
 
-    // Отмена удаления новости в панели управления
     @Test
+    @DisplayName("Отмена удаления новости в панели управления")
     public void clickCancelDeleteNewsBtnTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -130,8 +134,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsListWithText(title);
     }
 
-    // Разворачивание описания новости в панели управления
     @Test
+    @DisplayName("Разворачивание описания новости в панели управления")
     public void clickViewNewsBtnTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -146,8 +150,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.getDescriptionNews(description);
     }
 
-    // Редактирование новости в панели управления
     @Test
+    @DisplayName("Редактирование новости в панели управления")
     public void editNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -174,8 +178,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.deleteNews(newTitle);
     }
 
-    // Смена статуса новости
     @Test
+    @DisplayName("Смена статуса новости в панели управления")
     public void changeStatusNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -193,8 +197,8 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsStatus(title, "NOT ACTIVE");
     }
 
-    // Отмена редактирования новости
     @Test
+    @DisplayName("Отмена редактирования новости в панели управления")
     public void cancelEditNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
@@ -212,14 +216,14 @@ public class ControlPanelNewsTest {
         controlPanelNewsSteps.checkingNewsListWithText(title);
     }
 
-    // Нажатие на кнопку сортировка новостей в панели управления
     @Test
+    @DisplayName("Сортировка новостей в панели управления")
     public void sortNewsTest() {
         controlPanelNewsSteps.clickSortNewsBtn();
     }
 
-    // Фильтрация новостей по категории в панели управления
     @Test
+    @DisplayName("Фильтрация новостей по категории в панели управления")
     public void filterNewsByCategoryTest() {
         String category = randomCategory();
         String title = generateTitle();

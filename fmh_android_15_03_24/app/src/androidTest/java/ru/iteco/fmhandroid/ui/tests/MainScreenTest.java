@@ -1,7 +1,6 @@
 package ru.iteco.fmhandroid.ui.tests;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;
@@ -10,14 +9,19 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Epic;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
 import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 
+@Epic("Тест-кейсы для проведения функционального тестирования главного экрана")
 public class MainScreenTest {
     LoadingSteps loadingSteps = new LoadingSteps();
     AuthSteps authSteps = new AuthSteps();
@@ -39,21 +43,21 @@ public class MainScreenTest {
         authSteps.clickBtnLogOut();
     }
 
-    // Проверка загрузки элементов главного экрана
     @Test
+    @DisplayName("Проверка загрузки элементов главного экрана")
     public void checkingLoadingMainScreenTest() {
         mainSteps.checkLoadingMainPage();
     }
 
-    // Переход на страницу новости с главного экрана
     @Test
+    @DisplayName("Переход на страницу новостей с главного экрана")
     public void goingToNewsPageFromMainPage() {
         mainSteps.goToNewsPageFromMainPage();
         mainSteps.checkLoadingNewsPage();
     }
 
-    // Переход на страницу новости с главного меню
     @Test
+    @DisplayName("Переход на страницу новостей с главного меню")
     public void goingToNewsPageFromMainMenu() {
         mainSteps.openMainMenu();
         mainSteps.goToNewsPageFromMainMenu();
