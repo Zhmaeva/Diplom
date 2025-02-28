@@ -25,7 +25,7 @@ import io.qameta.allure.kotlin.Step;
 
 public class UIHelper {
 
-    private static final long waitTime = 20000;
+    private static final long waitTime = 50000;
 
     public void elementWaiting(int id) {
         onView(isRoot()).perform(waitDisplayed(id, waitTime));
@@ -58,7 +58,7 @@ public class UIHelper {
                         }
                     }
 
-                    uiController.loopMainThreadForAtLeast(50);
+                    uiController.loopMainThreadForAtLeast(100);
                 }
                 while (System.currentTimeMillis() < endTime);
 

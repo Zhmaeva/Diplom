@@ -34,6 +34,10 @@ public class AboutScreenTest {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
+    @Rule
+    public ScreenshotRule screenshotRule = new ScreenshotRule(ScreenshotRule.Mode.FAILURE,
+            String.valueOf(System.currentTimeMillis()));
+
     @Before
     public void setup() {
         authSteps.checkLoadingAuthPage();
