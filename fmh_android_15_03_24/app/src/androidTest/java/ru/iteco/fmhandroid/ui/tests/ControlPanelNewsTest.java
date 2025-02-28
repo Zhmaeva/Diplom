@@ -20,6 +20,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.rules.ScreenshotRule;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
@@ -52,6 +53,10 @@ public class ControlPanelNewsTest {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+
+    @Rule
+    public ScreenshotRule screenshotRule = new ScreenshotRule(ScreenshotRule.Mode.FAILURE,
+            String.valueOf(System.currentTimeMillis()));
 
     @Before
     public void setup() {
@@ -106,7 +111,7 @@ public class ControlPanelNewsTest {
     public void deleteNewsTest() {
         String category = randomCategory();
         String title = generateTitle();
-        String publicationDate = generateFutureDate();
+        String publicationDate = getCurrentDate();
         String publicationTime = getCurrentTime();
         String description = generateDescription();
 
@@ -122,7 +127,7 @@ public class ControlPanelNewsTest {
     public void clickCancelDeleteNewsBtnTest() {
         String category = randomCategory();
         String title = generateTitle();
-        String publicationDate = generateFutureDate();
+        String publicationDate = getCurrentDate();
         String publicationTime = getCurrentTime();
         String description = generateDescription();
 
@@ -174,8 +179,6 @@ public class ControlPanelNewsTest {
                 newCategory, newTitle, newPublicationDate, newPublicationTime, newDescription);
         createNewsSteps.clickSaveBtn();
         controlPanelNewsSteps.checkingNewsListWithText(newTitle);
-
-        controlPanelNewsSteps.deleteNews(newTitle);
     }
 
     @Test

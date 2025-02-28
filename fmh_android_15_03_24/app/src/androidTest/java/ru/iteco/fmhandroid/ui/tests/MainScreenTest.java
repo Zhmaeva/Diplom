@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.rules.ScreenshotRule;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
@@ -30,6 +31,10 @@ public class MainScreenTest {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+
+    @Rule
+    public ScreenshotRule screenshotRule = new ScreenshotRule(ScreenshotRule.Mode.FAILURE,
+            String.valueOf(System.currentTimeMillis()));
 
     @Before
     public void setup() {

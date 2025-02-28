@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.rules.ScreenshotRule;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.Issue;
@@ -34,6 +35,10 @@ public class AuthScreenTest {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+
+    @Rule
+    public ScreenshotRule screenshotRule = new ScreenshotRule(ScreenshotRule.Mode.FAILURE,
+            String.valueOf(System.currentTimeMillis()));
 
     @Before
     public void setup() {
@@ -78,7 +83,7 @@ public class AuthScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #3")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/3")
     @DisplayName("Нельзя авторизоваться в приложении с корректным логином и паролем зарегистрированного пользователя, написанном в разном регистре")
     public void failedAuthorizationWithDifferentLetterTest() {
         authSteps.inputLogin(dataGenerator.differentRegistersLogin);
@@ -89,7 +94,7 @@ public class AuthScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #1")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/1")
     @DisplayName("Нельзя авторизоваться в приложении с незарегистрированным логином и корректным паролем зарегистрированного пользователя")
     public void failedAuthorizationWithWrongLoginTest() {
         authSteps.inputLogin(dataGenerator.wrongLogin);
@@ -100,7 +105,7 @@ public class AuthScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #2")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/2")
     @DisplayName("Нельзя авторизоваться в приложении с корректным логином зарегистрированного пользователя и паролем незарегистрированного пользователя")
     public void failedAuthorizationWithWrongPasswordTest() {
         authSteps.inputLogin(dataGenerator.login);
@@ -111,7 +116,7 @@ public class AuthScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #4")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/4")
     @DisplayName("Нельзя авторизоваться в приложении с логином состоящим из 1 символа и корректным паролем зарегистрированного пользователя")
     public void failedAuthorizationWithOneCharacterLoginTest() {
         authSteps.inputLogin(dataGenerator.oneCharacterLogin);
@@ -122,7 +127,7 @@ public class AuthScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #5")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/5")
     @DisplayName("Нельзя авторизоваться в приложении c корректным логином зарегистрированного пользователя и паролем состоящим из 1 символа")
     public void failedAuthorizationWithOneCharacterPasswordTest() {
         authSteps.inputLogin(dataGenerator.login);

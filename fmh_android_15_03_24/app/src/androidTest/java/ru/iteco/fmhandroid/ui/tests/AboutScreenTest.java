@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.rules.ScreenshotRule;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.Issue;
@@ -53,7 +54,7 @@ public class AboutScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #6")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/6")
     @DisplayName("Проверка ссылки Политика конфиденциальности")
     public void checkPrivacyPoliceInAboutPage() {
         aboutSteps.clickPrivacyPolicy();
@@ -61,7 +62,7 @@ public class AboutScreenTest {
     }
 
     @Test
-    @Issue("Баг репорт #7")
+    @Issue("https://github.com/Zhmaeva/Diplom/issues/7")
     @DisplayName("Проверка ссылки Пользовательское соглашение")
     public void checkTermOfUseInAboutPage() {
         aboutSteps.clickTermsOfUse();
