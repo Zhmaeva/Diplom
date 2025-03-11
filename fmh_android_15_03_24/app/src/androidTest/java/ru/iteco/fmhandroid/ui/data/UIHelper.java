@@ -18,14 +18,11 @@ import androidx.test.espresso.util.TreeIterables;
 
 import org.hamcrest.Matcher;
 
-import java.lang.annotation.Documented;
 import java.util.concurrent.TimeoutException;
-
-import io.qameta.allure.kotlin.Step;
 
 public class UIHelper {
 
-    private static final long waitTime = 50000;
+    private static final long waitTime = 5000;
 
     public void elementWaiting(int id) {
         onView(isRoot()).perform(waitDisplayed(id, waitTime));
