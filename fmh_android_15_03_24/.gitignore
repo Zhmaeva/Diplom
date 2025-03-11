@@ -49,3 +49,4 @@ captures/
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
 /sandbox/*/build/
+/allure-results/
