@@ -14,7 +14,6 @@ import android.view.View;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -61,16 +60,16 @@ public class ControlPanelNewsTest {
     @Before
     public void setup() {
         loadingSteps.checkLoadingScreen();
-        authSteps.checkLoadingAuthPage();
-        authSteps.successAuth();
-        mainSteps.goToNewsPageFromMainPage();
-        mainSteps.checkLoadingNewsPage();
-        newsMainSteps.clickControlPanelBtn();
-    }
-
-    @After
-    public void teardown() {
-        authSteps.clickBtnLogOut();
+        try {
+            mainSteps.goToNewsPageFromMainPage();
+            mainSteps.checkLoadingNewsPage();
+            newsMainSteps.clickControlPanelBtn();
+        } catch (Exception e) {
+            authSteps.checkLoadingAuthPage();
+            authSteps.successAuth();
+            mainSteps.goToNewsPageFromMainPage();
+            newsMainSteps.clickControlPanelBtn();
+        }
     }
 
     @Test

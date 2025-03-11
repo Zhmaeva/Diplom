@@ -43,7 +43,12 @@ public class AuthScreenTest {
     @Before
     public void setup() {
         loadingSteps.checkLoadingScreen();
-        authSteps.checkLoadingAuthPage();
+        try {
+            authSteps.checkLoadingAuthPage();
+        } catch (Exception e) {
+            authSteps.checkLogIn();
+            authSteps.clickBtnLogOut();
+        }
     }
 
     @Test

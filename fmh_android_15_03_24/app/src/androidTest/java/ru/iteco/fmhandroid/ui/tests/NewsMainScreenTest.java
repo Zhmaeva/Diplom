@@ -5,7 +5,6 @@ import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,7 +18,6 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
 import ru.iteco.fmhandroid.ui.steps.ControlPanelNewsSteps;
 import ru.iteco.fmhandroid.ui.steps.FilterNewsSteps;
-import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
 import ru.iteco.fmhandroid.ui.steps.NewsMainSteps;
 
@@ -29,7 +27,6 @@ import ru.iteco.fmhandroid.ui.steps.NewsMainSteps;
 
 @Epic("Тест-кейсы для проведения функционального тестирования главного экрана новостей")
 public class NewsMainScreenTest {
-    LoadingSteps loadingSteps = new LoadingSteps();
     AuthSteps authSteps = new AuthSteps();
     MainSteps mainSteps = new MainSteps();
     NewsMainSteps newsMainSteps = new NewsMainSteps();
@@ -46,16 +43,15 @@ public class NewsMainScreenTest {
 
     @Before
     public void setup() {
-        loadingSteps.checkLoadingScreen();
-        authSteps.checkLoadingAuthPage();
-        authSteps.successAuth();
-        mainSteps.goToNewsPageFromMainPage();
-        mainSteps.checkLoadingNewsPage();
-    }
-
-    @After
-    public void teardown() {
-        authSteps.clickBtnLogOut();
+        try {
+            mainSteps.checkLoadingMainPage();
+            mainSteps.goToNewsPageFromMainPage();
+            mainSteps.checkLoadingNewsPage();
+        } catch (Exception e) {
+            authSteps.checkLoadingAuthPage();
+            authSteps.successAuth();
+            mainSteps.goToNewsPageFromMainPage();
+        }
     }
 
     @Test

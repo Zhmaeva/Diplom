@@ -5,7 +5,6 @@ import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,6 +18,7 @@ import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.AboutSteps;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
+import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
 
 @LargeTest
@@ -27,6 +27,7 @@ import ru.iteco.fmhandroid.ui.steps.MainSteps;
 
 @Epic("Тест-кейсы для проведения функционального тестирования экрана О приложении")
 public class AboutScreenTest {
+    LoadingSteps loadingSteps = new LoadingSteps();
     AuthSteps authSteps = new AuthSteps();
     MainSteps mainSteps = new MainSteps();
     AboutSteps aboutSteps = new AboutSteps();
@@ -41,16 +42,17 @@ public class AboutScreenTest {
 
     @Before
     public void setup() {
-        authSteps.checkLoadingAuthPage();
-        authSteps.successAuth();
-        mainSteps.checkLoadingMainPage();
-        mainSteps.openMainMenu();
-        aboutSteps.clickBtnAbout();
-    }
-
-    @After
-    public void tearDown() {
-        authSteps.clickBtnLogOut();
+        loadingSteps.checkLoadingScreen();
+        try {
+            mainSteps.checkLoadingMainPage();
+            mainSteps.openMainMenu();
+            aboutSteps.clickBtnAbout();
+        } catch (Exception e) {
+            authSteps.checkLoadingAuthPage();
+            authSteps.successAuth();
+            mainSteps.openMainMenu();
+            aboutSteps.clickBtnAbout();
+        }
     }
 
     @Test

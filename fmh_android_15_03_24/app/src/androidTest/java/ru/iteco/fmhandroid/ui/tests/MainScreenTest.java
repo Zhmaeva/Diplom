@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,7 +14,6 @@ import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.steps.AuthSteps;
-import ru.iteco.fmhandroid.ui.steps.LoadingSteps;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
 
 @LargeTest
@@ -24,7 +22,6 @@ import ru.iteco.fmhandroid.ui.steps.MainSteps;
 
 @Epic("Тест-кейсы для проведения функционального тестирования главного экрана")
 public class MainScreenTest {
-    LoadingSteps loadingSteps = new LoadingSteps();
     AuthSteps authSteps = new AuthSteps();
     MainSteps mainSteps = new MainSteps();
 
@@ -38,14 +35,12 @@ public class MainScreenTest {
 
     @Before
     public void setup() {
-        loadingSteps.checkLoadingScreen();
-        authSteps.checkLoadingAuthPage();
-        authSteps.successAuth();
-    }
-
-    @After
-    public void teardown() {
-        authSteps.clickBtnLogOut();
+        try {
+            mainSteps.checkLoadingMainPage();
+        } catch (Exception e) {
+            authSteps.checkLoadingAuthPage();
+            authSteps.successAuth();
+        }
     }
 
     @Test
@@ -68,6 +63,5 @@ public class MainScreenTest {
         mainSteps.goToNewsPageFromMainMenu();
         mainSteps.checkLoadingNewsPage();
     }
-
 
 }
